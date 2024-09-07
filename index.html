@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedalboard Builder with Cables and Knobs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <div class="pedal yellow" draggable="true" id="kingoftone">
+                King of Tone
+                <div class="io input">IN (1/4" Mono)</div>
+                <div class="io output">OUT (1/4" Mono)</div>
+                <div class="tooltip">Power: 9V DC | Current: 10 mA | Bypass: True</div>
+                <div class="knobs">Knobs: Volume, Drive, Tone</div>
+            </div>
+            <div class="pedal green" draggable="true" id="ts808">
+                Ibanez Tube Screamer
+                <div class="io input">IN (1/4" Mono)</div>
+                <div class="io output">OUT (1/4" Mono)</div>
+                <div class="tooltip">Power: 9V DC | Current: 7.5 mA | Bypass: Buffered</div>
+                <div class="knobs">Knobs: Overdrive, Tone, Level</div>
+            </div>
+            <!-- Continue adding other pedals similarly -->
+        </div>
+        <div class="bottom-area" id="pedalboard">
+            <div class="pedalboard-slot" id="slot1"></div>
+            <div class="pedalboard-slot" id="slot2"></div>
+            <div class="pedalboard-slot" id="slot3"></div>
+            <div class="pedalboard-slot" id="slot4"></div>
+        </div>
+    </div>
+
+    <script>
+        const pedals = document.querySelectorAll('.pedal');
+        const slots = document.querySelectorAll('.pedalboard-slot');
+
+        pedals.forEach(pedal => {
+            pedal.addEventListener('dragstart', dragStart);
+        });
+
+        slots.forEach(slot => {
+            slot.addEventListener('dragover', dragOver);
+            slot.addEventListener('drop', drop);
+        });
+
+        function dragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.id);
+        }
+
+        function dragOver(e) {
+            e.preventDefault();
+        }
+
+        function drop(e) {
+            e.preventDefault();
+            const id = e.dataTransfer.getData('text');
+            const draggableElement = document.getElementById(id);
+            if (!e.target.hasChildNodes()) {
+                e.target.appendChild(draggableElement);
+            }
+            e.dataTransfer.clearData();
+        }
+    </script>
+</body>
+</html>

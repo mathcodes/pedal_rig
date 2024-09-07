@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.top-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    padding: 10px;
+    background-color: #f4f4f4;
+}
+.pedal {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    cursor: grab;
+    position: relative;
+}
+.pedal .io {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    background-color: white;
+    color: black;
+    font-size: 10px;
+    text-align: center;
+    border: 1px solid #000;
+    line-height: 10px;
+}
+.input {
+    left: -25px;
+    top: 40px;
+}
+.output {
+    right: -25px;
+    top: 40px;
+}
+.knobs {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 9px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+}
+.pedal.orange { background-color: orange; }
+.pedal.red { background-color: red; }
+.pedal.green { background-color: green; }
+.pedal.blue { background-color: blue; }
+.pedal.purple { background-color: purple; }
+.pedal.yellow { background-color: yellow; }
+.pedal.black { background-color: black; }
+.pedal.brown { background-color: brown; }
+.bottom-area {
+    flex-grow: 1;
+    margin: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 120px);
+    grid-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+.pedalboard-slot {
+    width: 120px;
+    height: 120px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    background-color: #e9e9e9;
+}
+.tooltip {
+    font-size: 10px;
+    position: absolute;
+    top: 110px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+.pedal:hover .tooltip {
+    display: block;
+}
